@@ -3,232 +3,319 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="data:," />
-  <title>English & Digital Life – 8º Ano | 2º Trimestre</title>
-
+  <title>Football, Media & Culture – 8º Ano</title>
   <style>
+    :root {
+      --green: #16a34a;
+      --dark-green: #14532d;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --yellow: #facc15;
+      --orange: #f97316;
+      --red: #ef4444;
+      --purple: #7c3aed;
+      --ink: #172033;
+      --muted: #64748b;
+      --card: #ffffff;
+      --soft: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fb;
-      color: #1f2937;
+      background:
+        radial-gradient(circle at top left, rgba(22, 163, 74, 0.18), transparent 34%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 30%),
+        linear-gradient(180deg, #ecfdf5, #f8fafc 45%, #eff6ff);
+      color: var(--ink);
       line-height: 1.6;
     }
 
-    .container {
-      max-width: 980px;
+    .page {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 24px;
+      padding: 28px 18px 50px;
     }
 
-    header {
-      background: linear-gradient(135deg, #0f172a, #2563eb, #7c3aed);
+    .hero {
+      background: linear-gradient(135deg, #14532d, #16a34a 48%, #2563eb);
       color: white;
-      padding: 42px 24px;
-      border-radius: 22px;
-      text-align: center;
-      margin-bottom: 24px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+      border-radius: 28px;
+      padding: 42px 32px;
+      box-shadow: 0 22px 55px rgba(20, 83, 45, 0.28);
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
+    .hero::after {
+      content: "⚽";
+      position: absolute;
+      right: 34px;
+      top: 16px;
+      font-size: 150px;
+      opacity: 0.14;
+    }
+
+    .hero h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      position: relative;
+      z-index: 1;
     }
 
-    header p {
-      margin: 10px 0 0;
-      font-size: 1.1rem;
+    .hero .subtitle {
+      margin-top: 18px;
+      font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+      max-width: 820px;
+      opacity: 0.96;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .meta {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 22px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
     }
 
     section {
-      background: white;
-      padding: 24px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      background: var(--card);
+      margin-top: 22px;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.25);
     }
 
     h2 {
-      color: #2563eb;
-      margin-top: 0;
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
+      margin: 0 0 16px;
+      color: var(--dark-green);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     h3 {
-      color: #7c3aed;
+      color: #15803d;
       margin-bottom: 8px;
     }
 
-    ul {
-      padding-left: 22px;
+    .lead {
+      font-size: 1.08rem;
+      color: #334155;
+      margin-top: 0;
     }
 
-    li {
-      margin-bottom: 6px;
+    .mission {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    .highlight {
-      background: #eef2ff;
-      border-left: 5px solid #4f46e5;
-      padding: 16px;
-      border-radius: 12px;
-      margin-top: 12px;
+    .pill {
+      background: #ecfdf5;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 18px;
+      padding: 14px;
+      text-align: center;
+      font-weight: 700;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 18px;
     }
+
+    .card {
+      background: var(--soft);
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+    }
+
+    ul { margin: 10px 0 0; padding-left: 22px; }
+    li { margin-bottom: 7px; }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 12px;
-      font-size: 0.95rem;
+      overflow: hidden;
+      border-radius: 16px;
+      margin-top: 16px;
+      background: white;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+      vertical-align: top;
     }
 
     th {
-      background: #2563eb;
-      color: white;
-      text-align: left;
-      padding: 10px;
+      background: #dcfce7;
+      color: #14532d;
     }
 
-    td {
-      border: 1px solid #e5e7eb;
-      padding: 10px;
+    tr:last-child td { border-bottom: none; }
+
+    .project {
+      background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+      border: 2px solid #bbf7d0;
     }
 
-    tr:nth-child(even) {
-      background: #f9fafb;
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .tag {
-      display: inline-block;
-      background: #dbeafe;
-      color: #1e40af;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      margin: 4px;
-      font-weight: bold;
+    .word {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
     }
 
-    button {
+    .word strong { color: #15803d; }
+
+    button.audio {
       border: none;
-      background: #2563eb;
+      background: #16a34a;
       color: white;
-      border-radius: 8px;
-      padding: 4px 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       cursor: pointer;
-      margin-left: 6px;
-      transition: 0.2s;
+      font-size: 15px;
+      flex-shrink: 0;
     }
 
-    button:hover {
-      background: #1d4ed8;
+    button.audio:hover { background: #166534; }
+
+    .tips {
+      background: linear-gradient(135deg, #fef9c3, #ffedd5);
+      border: 1px solid #fde68a;
     }
 
     .footer {
       text-align: center;
-      color: #6b7280;
-      font-size: 0.95rem;
-      margin-top: 24px;
-      padding-bottom: 24px;
+      color: #475569;
+      padding: 28px 10px 0;
+      font-weight: 700;
     }
 
-    @media print {
-      body {
-        background: white;
-      }
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1e40af;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
 
-      section,
-      header {
-        box-shadow: none;
-      }
+    @media (max-width: 620px) {
+      .hero, section { border-radius: 20px; padding: 24px; }
+      th, td { font-size: 0.92rem; padding: 10px; }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <h1>🌐 English & Digital Life</h1>
-      <p>Communication, storytelling and identity in digital environments</p>
-      <p>8º Ano | 2º Trimestre – 2026</p>
+  <main class="page">
+    <header class="hero">
+      <h1>Football, Media & Culture</h1>
+      <p class="subtitle">English, digital citizenship, media literacy and World Cup podcast production</p>
+      <div class="meta">8º Ano | 2º Trimestre – 2026</div>
     </header>
 
     <section>
-      <h2>Welcome, students!</h2>
-      <p>
-        Neste trimestre, vamos estudar inglês conectado à vida digital: histórias, mensagens, perfis,
-        cultura online, comunicação, opiniões, futuro e produção de narrativas digitais.
+      <h2>👋 Welcome, students!</h2>
+      <p class="lead">
+        Neste trimestre, vamos estudar inglês conectado à mídia, à cultura digital, ao futebol e à Copa do Mundo.
       </p>
-      <div class="highlight">
-        Nosso objetivo não é falar inglês perfeito. Nosso objetivo é usar o inglês para interpretar, comunicar, criar e expressar ideias.
-      </div>
+      <p>
+        Vamos usar o inglês para interpretar textos, analisar informações, discutir opiniões, produzir conteúdo digital e criar um podcast colaborativo sobre futebol, mídia e cultura. O objetivo não é falar inglês perfeito: é comunicar ideias com clareza, criatividade e participação.
+      </p>
     </section>
 
     <section>
       <h2>🎯 Nossa missão no 2º trimestre</h2>
       <p>Durante esta etapa, vamos usar o inglês para:</p>
-      <div>
-        <span class="tag">interpretar narrativas</span>
-        <span class="tag">entender ambientes digitais</span>
-        <span class="tag">expressar opiniões</span>
-        <span class="tag">falar sobre o futuro</span>
-        <span class="tag">criar histórias digitais</span>
-        <span class="tag">usar inglês com mais confiança</span>
+      <div class="mission">
+        <div class="pill">interpretar mídias</div>
+        <div class="pill">analisar fake news</div>
+        <div class="pill">expressar opiniões</div>
+        <div class="pill">falar sobre futebol</div>
+        <div class="pill">criar podcast</div>
+        <div class="pill">usar inglês com confiança</div>
       </div>
     </section>
 
     <section>
-      <h2>O que vamos aprender</h2>
+      <h2>📚 O que vamos aprender</h2>
       <div class="grid">
-        <div>
-          <h3>📖 Leitura e interpretação</h3>
+        <div class="card">
+          <span class="tag">Leitura crítica</span>
           <ul>
-            <li>Gêneros narrativos.</li>
-            <li>Ambientes virtuais.</li>
             <li>Informações explícitas e implícitas.</li>
-            <li>Tema principal dos textos.</li>
-            <li>Comparação de textos sobre o mesmo tema.</li>
+            <li>Tema e finalidade dos textos.</li>
+            <li>Fatos e opiniões.</li>
+            <li>Comparação de textos e mídias.</li>
+            <li>Fake news e desinformação.</li>
           </ul>
         </div>
-
-        <div>
-          <h3>🧠 Conhecimentos linguísticos</h3>
+        <div class="card">
+          <span class="tag">Media & Digital Life</span>
           <ul>
-            <li>Prefixos e sufixos.</li>
-            <li>Formação de palavras.</li>
-            <li>Formas verbais do futuro.</li>
-            <li>Planos e previsões.</li>
-            <li>Sentido de palavras e expressões no contexto.</li>
+            <li>Redes sociais e comunicação digital.</li>
+            <li>Memes, campanhas e conteúdos multimodais.</li>
+            <li>Mídia esportiva.</li>
+            <li>Cidadania digital.</li>
+            <li>Uso responsável da informação.</li>
           </ul>
         </div>
-
-        <div>
-          <h3>🎤 Oralidade</h3>
+        <div class="card">
+          <span class="tag">Oralidade</span>
           <ul>
-            <li>Recursos linguísticos em interação oral.</li>
             <li>Expressar opiniões.</li>
-            <li>Explicar ideias.</li>
-            <li>Fazer perguntas.</li>
-            <li>Usar chunks para participar melhor.</li>
+            <li>Concordar e discordar.</li>
+            <li>Usar chunks comunicativos.</li>
+            <li>Organizar falas em grupo.</li>
+            <li>Produzir podcast em inglês.</li>
           </ul>
         </div>
-
-        <div>
-          <h3>🌎 Cultura e comunicação</h3>
+        <div class="card">
+          <span class="tag">Football & Culture</span>
           <ul>
-            <li>Aspectos culturais na comunicação.</li>
-            <li>Gestos, expressões e comportamentos.</li>
-            <li>Comunicação em ambientes digitais.</li>
-            <li>Identidade e cultura digital.</li>
-            <li>Storytelling multimodal.</li>
+            <li>Copa do Mundo.</li>
+            <li>Futebol e identidade cultural.</li>
+            <li>Futebol feminino.</li>
+            <li>Racismo no esporte.</li>
+            <li>Torcedores, mídia e cultura global.</li>
           </ul>
         </div>
       </div>
@@ -244,20 +331,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>D02</td><td>Estabelecer relações entre partes de um texto, identificando repetições ou substituições que contribuem para a continuidade de um texto.</td></tr>
-          <tr><td>D19</td><td>Reconhecer o efeito de sentido decorrente da exploração de recursos ortográficos e/ou morfossintáticos.</td></tr>
-          <tr><td>D01</td><td>Localizar informações explícitas em um texto.</td></tr>
-          <tr><td>D05</td><td>Interpretar texto com auxílio de material gráfico diverso, como propagandas, quadrinhos, fotos e outros recursos visuais.</td></tr>
-          <tr><td>D06</td><td>Identificar o tema de um texto.</td></tr>
-          <tr><td>D18</td><td>Reconhecer o efeito de sentido decorrente da escolha de uma determinada palavra ou expressão.</td></tr>
-          <tr><td>D20</td><td>Reconhecer diferentes formas de tratar uma informação na comparação de textos que tratam do mesmo tema.</td></tr>
-          <tr><td>D03</td><td>Inferir o sentido de uma palavra ou expressão.</td></tr>
+          <tr><td><strong>D05</strong></td><td>Interpretar texto com auxílio de material gráfico diverso, como campanhas, quadrinhos, fotos, memes, imagens e recursos visuais.</td></tr>
+          <tr><td><strong>D06</strong></td><td>Identificar o tema de um texto.</td></tr>
+          <tr><td><strong>D12</strong></td><td>Identificar a finalidade de textos de diferentes gêneros.</td></tr>
+          <tr><td><strong>D14</strong></td><td>Distinguir um fato da opinião relativa a esse fato.</td></tr>
+          <tr><td><strong>D15</strong></td><td>Estabelecer relações lógico-discursivas presentes no texto, marcadas por conjunções, advérbios etc.</td></tr>
+          <tr><td><strong>D18</strong></td><td>Reconhecer o efeito de sentido decorrente da escolha de uma determinada palavra ou expressão.</td></tr>
+          <tr><td><strong>D20</strong></td><td>Reconhecer diferentes formas de tratar uma informação na comparação de textos que tratam do mesmo tema.</td></tr>
         </tbody>
       </table>
     </section>
 
     <section>
-      <h2>📌 Como será a avaliação</h2>
+      <h2>📝 Como será a avaliação</h2>
       <table>
         <thead>
           <tr>
@@ -267,213 +353,209 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Avaliação escrita</td><td>4,0</td><td>Interpretação, vocabulário em contexto, gêneros digitais e uso da língua.</td></tr>
-          <tr><td>Plataforma Inglês Paraná Teens</td><td>2,0</td><td>Revisão, prática, autonomia e contato contínuo com o inglês.</td></tr>
-          <tr><td>Simulado</td><td>2,0</td><td>Descritores, leitura, interpretação e resolução de questões.</td></tr>
-          <tr><td>Projetos e produções multimodais</td><td>2,0</td><td>Storytelling, criatividade, oralidade, colaboração e comunicação.</td></tr>
+          <tr><td>Avaliação escrita</td><td><strong>4,0</strong></td><td>Interpretação, descritores, vocabulário em contexto, fatos/opiniões, mídia digital e leitura crítica.</td></tr>
+          <tr><td>Plataforma Inglês Paraná High</td><td><strong>2,0</strong></td><td>Prática contínua, autonomia, listening, vocabulary, speaking e contato frequente com o inglês.</td></tr>
+          <tr><td>Simulado / Prova Paraná</td><td><strong>2,0</strong></td><td>Descritores, leitura, interpretação, análise de gêneros e resolução de questões no modelo da Prova Paraná.</td></tr>
+          <tr><td>Football, Media & Culture Podcast</td><td><strong>2,0</strong></td><td>Podcast em inglês, oralidade, colaboração, conteúdo, criatividade, cartaz/capa e uso funcional da língua inglesa.</td></tr>
         </tbody>
       </table>
     </section>
 
-    <section>
-      <h2>🎬 Projeto final</h2>
-      <h3>English & Digital Life: Digital Storytelling Project</h3>
+    <section class="project">
+      <h2>🎙️ Trabalho do trimestre</h2>
+      <h3>Football, Media & Culture Podcast</h3>
       <p>
-        Como projeto final, vocês irão criar uma narrativa digital em inglês. A produção poderá ser feita
-        individualmente, em dupla ou em grupo, de acordo com a orientação do professor.
+        Neste trimestre, nosso trabalho final será a produção colaborativa de um <strong>podcast em inglês</strong> relacionado à Copa do Mundo, mídia esportiva, cultura global, identidade, redes sociais e comunicação digital.
       </p>
-      <p>Vocês poderão produzir:</p>
-      <div>
-        <span class="tag">mini história digital</span>
-        <span class="tag">quadrinho digital</span>
-        <span class="tag">diálogo em rede social</span>
-        <span class="tag">história visual</span>
-        <span class="tag">vídeo curto</span>
-        <span class="tag">apresentação multimodal</span>
-        <span class="tag">perfil digital fictício</span>
+      <p>
+        A atividade vai ajudar a desenvolver oralidade, listening, vocabulário, organização de ideias, criatividade, colaboração e leitura crítica da mídia.
+      </p>
+
+      <p>Os grupos deverão criar:</p>
+      <div class="mission">
+        <div class="pill">episódio de podcast</div>
+        <div class="pill">roteiro em inglês</div>
+        <div class="pill">cartaz/capa</div>
+        <div class="pill">identidade visual</div>
+        <div class="pill">tema da Copa</div>
+        <div class="pill">falas organizadas</div>
       </div>
-      <div class="highlight">
-        O foco será comunicar uma ideia com clareza, criatividade e uso significativo do inglês — não perfeição gramatical.
-      </div>
+
+      <h3>🌍 Possíveis temas</h3>
+      <ul>
+        <li>Football and national identity</li>
+        <li>Women’s football</li>
+        <li>Football and social media</li>
+        <li>Fake news in sports</li>
+        <li>Football rivalries</li>
+        <li>Racism in football</li>
+        <li>World Cup history</li>
+        <li>Memes and football culture</li>
+        <li>Football fans around the world</li>
+        <li>Technology in football</li>
+        <li>VAR and media debates</li>
+        <li>Greatest World Cup moments</li>
+      </ul>
+
+      <h3>📋 Critérios de avaliação</h3>
+      <p>
+        A atividade terá valor total de <strong>2,0 pontos</strong>. Cada rubrica valerá <strong>0,5 ponto</strong>.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rubrica</th>
+            <th>Valor</th>
+            <th>O que será observado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Oralidade e pronúncia</strong></td>
+            <td><strong>0,5</strong></td>
+            <td>Clareza na fala, participação oral, esforço comunicativo e pronúncia compreensível.</td>
+          </tr>
+          <tr>
+            <td><strong>Uso da língua inglesa</strong></td>
+            <td><strong>0,5</strong></td>
+            <td>Uso de vocabulário do trimestre, conectores, chunks e comunicação funcional em inglês.</td>
+          </tr>
+          <tr>
+            <td><strong>Conteúdo e criatividade</strong></td>
+            <td><strong>0,5</strong></td>
+            <td>Organização das ideias, criatividade, relevância do tema e qualidade do episódio.</td>
+          </tr>
+          <tr>
+            <td><strong>Trabalho em grupo e identidade visual</strong></td>
+            <td><strong>0,5</strong></td>
+            <td>Colaboração, divisão de tarefas, comprometimento e qualidade do cartaz/capa do podcast.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>🏆 Rubrica simplificada</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nível</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Excelente</strong></td>
+            <td>O grupo demonstrou excelente participação, criatividade, organização, uso do inglês e qualidade do podcast.</td>
+          </tr>
+          <tr>
+            <td><strong>Bom</strong></td>
+            <td>O grupo apresentou boa comunicação, organização e uso adequado do inglês na maior parte da atividade.</td>
+          </tr>
+          <tr>
+            <td><strong>Regular</strong></td>
+            <td>O grupo apresentou participação parcial, pouca variedade linguística ou necessidade frequente de apoio.</td>
+          </tr>
+          <tr>
+            <td><strong>Em desenvolvimento</strong></td>
+            <td>O grupo apresentou pouca participação, baixa organização ou uso muito limitado da língua inglesa.</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section>
       <h2>🔊 20 palavras prioritárias</h2>
       <p>Clique no botão de áudio para ouvir a pronúncia em inglês.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Palavra</th>
-            <th>Significado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>story <button onclick="speak('story')">🔊</button></td><td>história</td></tr>
-          <tr><td>online <button onclick="speak('online')">🔊</button></td><td>online</td></tr>
-          <tr><td>profile <button onclick="speak('profile')">🔊</button></td><td>perfil</td></tr>
-          <tr><td>message <button onclick="speak('message')">🔊</button></td><td>mensagem</td></tr>
-          <tr><td>content <button onclick="speak('content')">🔊</button></td><td>conteúdo</td></tr>
-          <tr><td>future <button onclick="speak('future')">🔊</button></td><td>futuro</td></tr>
-          <tr><td>creator <button onclick="speak('creator')">🔊</button></td><td>criador(a)</td></tr>
-          <tr><td>opinion <button onclick="speak('opinion')">🔊</button></td><td>opinião</td></tr>
-          <tr><td>community <button onclick="speak('community')">🔊</button></td><td>comunidade</td></tr>
-          <tr><td>comment <button onclick="speak('comment')">🔊</button></td><td>comentário</td></tr>
-          <tr><td>platform <button onclick="speak('platform')">🔊</button></td><td>plataforma</td></tr>
-          <tr><td>communication <button onclick="speak('communication')">🔊</button></td><td>comunicação</td></tr>
-          <tr><td>digital <button onclick="speak('digital')">🔊</button></td><td>digital</td></tr>
-          <tr><td>culture <button onclick="speak('culture')">🔊</button></td><td>cultura</td></tr>
-          <tr><td>audience <button onclick="speak('audience')">🔊</button></td><td>público / audiência</td></tr>
-          <tr><td>creative <button onclick="speak('creative')">🔊</button></td><td>criativo(a)</td></tr>
-          <tr><td>trend <button onclick="speak('trend')">🔊</button></td><td>tendência</td></tr>
-          <tr><td>influence <button onclick="speak('influence')">🔊</button></td><td>influência</td></tr>
-          <tr><td>perspective <button onclick="speak('perspective')">🔊</button></td><td>perspectiva</td></tr>
-          <tr><td>identity <button onclick="speak('identity')">🔊</button></td><td>identidade</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>🔊 20 chunks / expressões importantes</h2>
-      <p>Essas expressões ajudam você a participar, opinar, explicar e apresentar ideias em inglês.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Chunk</th>
-            <th>Significado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>In my opinion… <button onclick="speak('In my opinion')">🔊</button></td><td>Na minha opinião…</td></tr>
-          <tr><td>I totally agree. <button onclick="speak('I totally agree')">🔊</button></td><td>Eu concordo totalmente.</td></tr>
-          <tr><td>I disagree because… <button onclick="speak('I disagree because')">🔊</button></td><td>Eu discordo porque…</td></tr>
-          <tr><td>What do you mean? <button onclick="speak('What do you mean?')">🔊</button></td><td>O que você quer dizer?</td></tr>
-          <tr><td>Could you explain that? <button onclick="speak('Could you explain that?')">🔊</button></td><td>Você poderia explicar isso?</td></tr>
-          <tr><td>From my perspective… <button onclick="speak('From my perspective')">🔊</button></td><td>Da minha perspectiva…</td></tr>
-          <tr><td>I’m not really into… <button onclick="speak('I am not really into')">🔊</button></td><td>Eu não curto muito…</td></tr>
-          <tr><td>I’d rather… <button onclick="speak('I would rather')">🔊</button></td><td>Eu preferiria…</td></tr>
-          <tr><td>It depends on… <button onclick="speak('It depends on')">🔊</button></td><td>Depende de…</td></tr>
-          <tr><td>One example is… <button onclick="speak('One example is')">🔊</button></td><td>Um exemplo é…</td></tr>
-          <tr><td>I think people should… <button onclick="speak('I think people should')">🔊</button></td><td>Eu acho que as pessoas deveriam…</td></tr>
-          <tr><td>The story shows… <button onclick="speak('The story shows')">🔊</button></td><td>A história mostra…</td></tr>
-          <tr><td>This reminds me of… <button onclick="speak('This reminds me of')">🔊</button></td><td>Isso me lembra…</td></tr>
-          <tr><td>I noticed that… <button onclick="speak('I noticed that')">🔊</button></td><td>Eu percebi que…</td></tr>
-          <tr><td>The main idea is… <button onclick="speak('The main idea is')">🔊</button></td><td>A ideia principal é…</td></tr>
-          <tr><td>I’m planning to… <button onclick="speak('I am planning to')">🔊</button></td><td>Estou planejando…</td></tr>
-          <tr><td>Maybe in the future… <button onclick="speak('Maybe in the future')">🔊</button></td><td>Talvez no futuro…</td></tr>
-          <tr><td>Social media can… <button onclick="speak('Social media can')">🔊</button></td><td>As redes sociais podem…</td></tr>
-          <tr><td>I learned that… <button onclick="speak('I learned that')">🔊</button></td><td>Eu aprendi que…</td></tr>
-          <tr><td>That makes sense. <button onclick="speak('That makes sense')">🔊</button></td><td>Isso faz sentido.</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>📝 Como estudar para a AV.1 e REC. AV.1</h2>
-      <ul>
-        <li>Revise os descritores trabalhados no trimestre.</li>
-        <li>Estude as 20 palavras prioritárias.</li>
-        <li>Pratique os 20 chunks comunicativos.</li>
-        <li>Releia atividades do caderno e dos slides.</li>
-        <li>Pratique interpretação de imagens, quadrinhos, narrativas e gêneros digitais.</li>
-        <li>Revise prefixos, sufixos e formas verbais do futuro.</li>
-        <li>Use a plataforma <strong>Inglês Paraná Teens</strong> para revisar e praticar.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>⭐ Dicas importantes</h2>
-      <ul>
-        <li><strong>Participe.</strong> Participar é parte importante da aprendizagem.</li>
-        <li><strong>Use os chunks.</strong> Eles ajudam você a falar com mais segurança.</li>
-        <li><strong>Não tenha medo de errar.</strong> Comunicação vem antes da perfeição.</li>
-        <li><strong>Revise aos poucos.</strong> Pequenas revisões frequentes ajudam muito.</li>
-        <li><strong>Crie com responsabilidade.</strong> Use a criatividade para comunicar ideias com clareza.</li>
-      </ul>
-      <div class="highlight">
-        Let’s communicate, create and tell stories in English!
-        <button onclick="speak('Let us communicate, create, and tell stories in English')">🔊</button>
+      <div class="vocab-grid">
+        <div class="word"><span><strong>football</strong><br>futebol</span><button class="audio" onclick="speak('football')">▶</button></div>
+        <div class="word"><span><strong>World Cup</strong><br>Copa do Mundo</span><button class="audio" onclick="speak('World Cup')">▶</button></div>
+        <div class="word"><span><strong>team</strong><br>time / equipe</span><button class="audio" onclick="speak('team')">▶</button></div>
+        <div class="word"><span><strong>player</strong><br>jogador(a)</span><button class="audio" onclick="speak('player')">▶</button></div>
+        <div class="word"><span><strong>fan</strong><br>torcedor(a)</span><button class="audio" onclick="speak('fan')">▶</button></div>
+        <div class="word"><span><strong>culture</strong><br>cultura</span><button class="audio" onclick="speak('culture')">▶</button></div>
+        <div class="word"><span><strong>media</strong><br>mídia</span><button class="audio" onclick="speak('media')">▶</button></div>
+        <div class="word"><span><strong>podcast</strong><br>podcast</span><button class="audio" onclick="speak('podcast')">▶</button></div>
+        <div class="word"><span><strong>identity</strong><br>identidade</span><button class="audio" onclick="speak('identity')">▶</button></div>
+        <div class="word"><span><strong>opinion</strong><br>opinião</span><button class="audio" onclick="speak('opinion')">▶</button></div>
+        <div class="word"><span><strong>fact</strong><br>fato</span><button class="audio" onclick="speak('fact')">▶</button></div>
+        <div class="word"><span><strong>fake news</strong><br>notícia falsa</span><button class="audio" onclick="speak('fake news')">▶</button></div>
+        <div class="word"><span><strong>source</strong><br>fonte</span><button class="audio" onclick="speak('source')">▶</button></div>
+        <div class="word"><span><strong>message</strong><br>mensagem</span><button class="audio" onclick="speak('message')">▶</button></div>
+        <div class="word"><span><strong>comment</strong><br>comentário</span><button class="audio" onclick="speak('comment')">▶</button></div>
+        <div class="word"><span><strong>social media</strong><br>redes sociais</span><button class="audio" onclick="speak('social media')">▶</button></div>
+        <div class="word"><span><strong>respect</strong><br>respeito</span><button class="audio" onclick="speak('respect')">▶</button></div>
+        <div class="word"><span><strong>racism</strong><br>racismo</span><button class="audio" onclick="speak('racism')">▶</button></div>
+        <div class="word"><span><strong>technology</strong><br>tecnologia</span><button class="audio" onclick="speak('technology')">▶</button></div>
+        <div class="word"><span><strong>audience</strong><br>público / audiência</span><button class="audio" onclick="speak('audience')">▶</button></div>
       </div>
     </section>
 
-    <p class="footer">Língua Inglesa – 8º Ano | 2º Trimestre – 2026</p>
-  </div>
+    <section>
+      <h2>💬 20 chunks / expressões importantes</h2>
+      <p>Essas expressões ajudam você a opinar, argumentar e participar do podcast em inglês.</p>
+      <div class="vocab-grid">
+        <div class="word"><span><strong>Welcome to our podcast.</strong><br>Bem-vindos ao nosso podcast.</span><button class="audio" onclick="speak('Welcome to our podcast')">▶</button></div>
+        <div class="word"><span><strong>Today, we are going to talk about…</strong><br>Hoje, vamos falar sobre…</span><button class="audio" onclick="speak('Today, we are going to talk about')">▶</button></div>
+        <div class="word"><span><strong>In my opinion…</strong><br>Na minha opinião…</span><button class="audio" onclick="speak('In my opinion')">▶</button></div>
+        <div class="word"><span><strong>I agree because…</strong><br>Eu concordo porque…</span><button class="audio" onclick="speak('I agree because')">▶</button></div>
+        <div class="word"><span><strong>I disagree because…</strong><br>Eu discordo porque…</span><button class="audio" onclick="speak('I disagree because')">▶</button></div>
+        <div class="word"><span><strong>One example is…</strong><br>Um exemplo é…</span><button class="audio" onclick="speak('One example is')">▶</button></div>
+        <div class="word"><span><strong>This is important because…</strong><br>Isso é importante porque…</span><button class="audio" onclick="speak('This is important because')">▶</button></div>
+        <div class="word"><span><strong>Football can show culture.</strong><br>O futebol pode mostrar cultura.</span><button class="audio" onclick="speak('Football can show culture')">▶</button></div>
+        <div class="word"><span><strong>Social media can influence fans.</strong><br>As redes sociais podem influenciar torcedores.</span><button class="audio" onclick="speak('Social media can influence fans')">▶</button></div>
+        <div class="word"><span><strong>We should respect all players.</strong><br>Devemos respeitar todos os jogadores.</span><button class="audio" onclick="speak('We should respect all players')">▶</button></div>
+        <div class="word"><span><strong>Fake news can be dangerous.</strong><br>Fake news pode ser perigosa.</span><button class="audio" onclick="speak('Fake news can be dangerous')">▶</button></div>
+        <div class="word"><span><strong>What is your opinion?</strong><br>Qual é sua opinião?</span><button class="audio" onclick="speak('What is your opinion')">▶</button></div>
+        <div class="word"><span><strong>Can you explain that?</strong><br>Você pode explicar isso?</span><button class="audio" onclick="speak('Can you explain that')">▶</button></div>
+        <div class="word"><span><strong>The main idea is…</strong><br>A ideia principal é…</span><button class="audio" onclick="speak('The main idea is')">▶</button></div>
+        <div class="word"><span><strong>According to the source…</strong><br>De acordo com a fonte…</span><button class="audio" onclick="speak('According to the source')">▶</button></div>
+        <div class="word"><span><strong>This topic is related to…</strong><br>Esse tema está relacionado a…</span><button class="audio" onclick="speak('This topic is related to')">▶</button></div>
+        <div class="word"><span><strong>Let's move to the next topic.</strong><br>Vamos para o próximo tema.</span><button class="audio" onclick="speak("Let's move to the next topic")">▶</button></div>
+        <div class="word"><span><strong>Thank you for listening.</strong><br>Obrigado por ouvir.</span><button class="audio" onclick="speak('Thank you for listening')">▶</button></div>
+        <div class="word"><span><strong>See you next time.</strong><br>Até a próxima.</span><button class="audio" onclick="speak('See you next time')">▶</button></div>
+        <div class="word"><span><strong>That’s all for today.</strong><br>Isso é tudo por hoje.</span><button class="audio" onclick="speak("That's all for today")">▶</button></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>📌 Como estudar para a AV.1, REC. AV.1 e Prova Paraná</h2>
+      <ul>
+        <li>Revise os descritores trabalhados no trimestre, especialmente para o Simulado / Prova Paraná.</li>
+        <li>Estude as 20 palavras prioritárias.</li>
+        <li>Pratique os 20 chunks comunicativos.</li>
+        <li>Releia atividades do caderno, dos slides e do Inglês Paraná High.</li>
+        <li>Pratique interpretação de imagens, memes, campanhas, notícias e gêneros digitais.</li>
+        <li>Revise fatos, opiniões, conectores e tema/finalidade dos textos.</li>
+        <li>Treine a leitura crítica de conteúdos de mídia e redes sociais.</li>
+        <li>Acompanhe os registros e orientações no LRCO.</li>
+      </ul>
+    </section>
+
+    <section class="tips">
+      <h2>⭐ Dicas importantes</h2>
+      <ul>
+        <li>Participe: falar melhora com prática.</li>
+        <li>Use os chunks para organizar suas falas.</li>
+        <li>Confira fontes antes de acreditar em uma informação.</li>
+        <li>Respeite opiniões diferentes durante os debates.</li>
+        <li>Use criatividade com responsabilidade.</li>
+        <li>Trabalhe em equipe e valorize a participação de todos.</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      Let’s talk about football, media and culture in English!<br>
+      Língua Inglesa – 8º Ano | 2º Trimestre – 2026
+    </div>
+  </main>
 
   <script>
-    let availableVoices = [];
-
-    function loadVoices() {
-      availableVoices = window.speechSynthesis.getVoices();
-    }
-
-    if ('speechSynthesis' in window) {
-      loadVoices();
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
-
-    function getBestEnglishVoice() {
-      if (!availableVoices || availableVoices.length === 0) {
-        availableVoices = window.speechSynthesis.getVoices();
-      }
-
-      const preferredKeywords = [
-        'natural',
-        'neural',
-        'enhanced',
-        'premium',
-        'google us english',
-        'google uk english',
-        'microsoft',
-        'aria',
-        'jenny',
-        'guy',
-        'samantha',
-        'siri',
-        'daniel',
-        'karen',
-        'alex'
-      ];
-
-      const englishVoices = availableVoices.filter(voice =>
-        voice.lang && voice.lang.toLowerCase().startsWith('en')
-      );
-
-      for (const keyword of preferredKeywords) {
-        const match = englishVoices.find(voice =>
-          voice.name.toLowerCase().includes(keyword)
-        );
-        if (match) return match;
-      }
-
-      const usVoice = englishVoices.find(voice =>
-        voice.lang.toLowerCase() === 'en-us'
-      );
-      if (usVoice) return usVoice;
-
-      return englishVoices[0] || null;
-    }
-
     function speak(text) {
-      if (!('speechSynthesis' in window)) {
-        alert('Seu navegador não suporta áudio automático de fala.');
-        return;
-      }
-
+      if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
-
       const utterance = new SpeechSynthesisUtterance(text);
-      const bestVoice = getBestEnglishVoice();
-
-      if (bestVoice) {
-        utterance.voice = bestVoice;
-        utterance.lang = bestVoice.lang;
-      } else {
-        utterance.lang = 'en-US';
-      }
-
-      utterance.rate = 0.82;
-      utterance.pitch = 1;
-      utterance.volume = 1;
-
+      utterance.lang = 'en-US';
+      utterance.rate = 0.85;
       window.speechSynthesis.speak(utterance);
     }
   </script>
